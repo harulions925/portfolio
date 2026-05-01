@@ -1,0 +1,44 @@
+<h2>編集</h2>
+
+<%= form_with model: @study_log do |f| %>
+    <table>
+      <tr>
+        <th>
+          <%= f.label :title, "タイトル" %>
+        </th>
+        <td>
+          <%= f.text_field :title %>
+        </td>
+      </tr>
+
+      <tr>
+        <th>
+          <%= f.label :content, "種類" %>
+        </th>
+        <td>
+          <%= f.text_field :content %>
+        </td>
+      </tr>
+
+      <tr>
+        <th>
+          <%= f.label :study_time, "時間" %>
+        </th>
+        <td>
+          <%= f.number_field :study_time %>
+        </td>
+      </tr>
+    </table>
+
+    <div>
+      <ul>
+        <li>
+          <%= f.submit "更新する" %>
+        </li>
+
+        <li>
+          <%= link_to "一覧へ", study_logs_path %>
+        </li>
+      </ul>
+    </div>
+<% end %>

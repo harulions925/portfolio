@@ -15,5 +15,12 @@
   </div>
 
   <div>
-    <%= link_to "直前のページに戻る", :back %>
+    <%= link_to "一覧に戻る", study_logs_path %>
   </div>
+
+  <% if user_signed_in? && @study_log.user_id == current_user.id %>
+    <div>
+      <%= link_to "情報を編集する",
+            edit_study_log_path(@study_log) %>
+    </div>
+  <% end %>

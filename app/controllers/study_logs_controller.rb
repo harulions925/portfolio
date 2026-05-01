@@ -23,6 +23,21 @@ class StudyLogsController < ApplicationController
     @study_log = StudyLog.find(params[:id])
   end
 
+  def edit
+    @study_log = current_user.study_logs.find(params[:id])
+  end
+
+  def update
+    @study_log = current_user.study_logs.find(params[:id])
+
+    if @study_log.update(study_log_params)
+      flash[:notice] = "更新しました"
+      redirect_to @study_log
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def study_log_params
