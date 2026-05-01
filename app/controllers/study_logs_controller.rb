@@ -38,6 +38,13 @@ class StudyLogsController < ApplicationController
     end
   end
 
+  def destroy
+    @study_log = StudyLog.find(params[:id])
+    @study_log.destroy
+    flash[:notice] = "削除しました"
+    redirect_to :study_logs
+  end
+
   private
 
   def study_log_params
