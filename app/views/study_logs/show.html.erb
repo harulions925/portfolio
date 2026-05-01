@@ -1,0 +1,19 @@
+<h2>投稿詳細</h2>
+  <div>
+    <p>タイトル</p>
+    <p><%= @study_log.title %></p>
+  </div>
+
+  <div>
+    <p>種類</p>
+    <p><%= @study_log.content %></p>
+  </div>
+
+  <div>
+    <p>学習時間</p>
+    <p><%= @study_log.study_time %></p>
+  </div>
+
+  <div>
+    <%= link_to "直前のページに戻る", :back %>
+  </div>

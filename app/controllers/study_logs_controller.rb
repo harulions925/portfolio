@@ -19,8 +19,12 @@ class StudyLogsController < ApplicationController
     end
   end
 
+  def show
+    @study_log = StudyLog.find(params[:id])
+  end
+
   private
-  
+
   def study_log_params
     params
       .require(:study_log)
