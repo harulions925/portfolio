@@ -1,0 +1,34 @@
+<h2>学習記録新規登録</h2>
+
+<%= form_with model: @study_log do |f| %>
+    <div>
+      <p>
+        <%= f.label :title, "タイトル" %>
+      </p>
+      <p>
+        <%= f.text_field :title %>
+    </div>
+
+    <div>
+      <p>
+        <%= f.label :content, "種類" %>
+      </p>
+      <p>
+        <%= f.text_field :content %>
+    </div>
+
+    <div>
+      <p>
+        <%= f.label :study_time, "学習時間" %>
+      </p>
+        <%= f.number_field :study_time %>
+    </div>
+
+    <div>
+      <%= f.submit "登録完了する" %>
+    </div>
+
+    <div>
+      <%= link_to "投稿一覧へ", study_logs_path %>
+    </div>
+<% end %>
