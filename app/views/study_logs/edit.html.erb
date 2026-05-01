@@ -13,19 +13,28 @@
 
       <tr>
         <th>
-          <%= f.label :content, "種類" %>
+          <%= f.label :content, "学習内容" %>
         </th>
         <td>
-          <%= f.text_field :content %>
+          <%= f.text_area :content %>
         </td>
       </tr>
 
       <tr>
         <th>
-          <%= f.label :study_time, "時間" %>
+          <%= f.label :study_time, "学習時間" %>
         </th>
         <td>
           <%= f.number_field :study_time %>
+        </td>
+      </tr>
+
+      <tr>
+        <th>
+          <%= f.label :study_date, "学習日" %>
+        </th>
+        <td>
+          <%= f.date_field :study_date %>
         </td>
       </tr>
     </table>

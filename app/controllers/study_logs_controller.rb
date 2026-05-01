@@ -50,6 +50,6 @@ class StudyLogsController < ApplicationController
   def study_log_params
     params
       .require(:study_log)
-      .permit(:title, :content, :study_time)
+      .permit(:title, :content, :study_time, :study_date)
   end
 end

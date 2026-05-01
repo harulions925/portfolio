@@ -11,10 +11,10 @@
 
     <div>
       <p>
-        <%= f.label :content, "種類" %>
+        <%= f.label :content, "学習内容" %>
       </p>
       <p>
-        <%= f.text_field :content %>
+        <%= f.text_area :content %>
     </div>
 
     <div>
@@ -24,6 +24,12 @@
         <%= f.number_field :study_time %>
     </div>
 
+    <div>
+      <p>
+        <%= f.label :study_date, "学習日" %>
+      </p>
+        <%= f.date_field :study_date %>
+    </div>
     <div>
       <%= f.submit "登録完了する" %>
     </div>
