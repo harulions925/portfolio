@@ -25,6 +25,10 @@
   </div>
 
   <div>
+    <%= render "favorite", study_log: @study_log %>
+  </div>
+  
+  <div>
     <%= link_to "一覧に戻る", study_logs_path %>
   </div>
 
@@ -35,7 +39,7 @@
     </div>
     <div>
       <%= link_to "削除",
-            study_log_path, data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか?" } %>
+            study_log_path(@study_log), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか?" } %>
     </div>
 
   <% end %>
