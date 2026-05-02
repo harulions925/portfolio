@@ -1,11 +1,18 @@
 class StudyLogsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @study_logs = StudyLog.all
+    @categories = Category.all
+
+    if params[:category_id].present?
+        @study_logs = current_user.study_logs.where(category_id: params[:category_id])
+    else
+        @study_logs = current_user.study_logs
+    end
   end
 
   def new
     @study_log = StudyLog.new
+    @categories = Category.all
   end
 
   def create
@@ -15,6 +22,8 @@ class StudyLogsController < ApplicationController
       flash[:notice] = "新規投稿の登録完了しました"
       redirect_to study_logs_path
     else
+      @categories = Category.all
+      p @study_log.errors.full_messages
       render "new", status: :unprocessable_entity
     end
   end
@@ -25,6 +34,7 @@ class StudyLogsController < ApplicationController
 
   def edit
     @study_log = current_user.study_logs.find(params[:id])
+    @categories = Category.all
   end
 
   def update
@@ -34,6 +44,7 @@ class StudyLogsController < ApplicationController
       flash[:notice] = "更新しました"
       redirect_to @study_log
     else
+      @categories = Category.all
       render :edit, status: :unprocessable_entity
     end
   end
@@ -50,6 +61,6 @@ class StudyLogsController < ApplicationController
   def study_log_params
     params
       .require(:study_log)
-      .permit(:title, :content, :study_time, :study_date)
+      .permit(:title, :content, :study_time, :study_date, :category_id)
   end
 end

@@ -20,6 +20,11 @@
   </div>
 
   <div>
+    <p>種類
+      <%= @study_log.category.name if @study_log.category.present? %></p>
+  </div>
+
+  <div>
     <%= link_to "一覧に戻る", study_logs_path %>
   </div>
 

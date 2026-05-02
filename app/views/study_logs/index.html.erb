@@ -1,20 +1,36 @@
 <h2>投稿一覧</h2>
 
+<p>
+  <%= form_tag study_logs_path, method: :get do %>
+    <%= select_tag :category_id,
+        options_from_collection_for_select(Category.all, :id, :name, params[:category_id]),
+        prompt: "カテゴリで絞る",
+        onchange: "this.form.submit();" %>
+  <% end %>
+</p>
+
 <% @study_logs.each do |study_log| %>
-    <p>
+  <p>
     <%= link_to study_log.title, study_log %>
-    </p>
-    <p>
+  </p>
+
+  <p>
     <%= study_log.content %>
-    </p>
-    <p>
+  </p>
+
+  <p>
     <%= study_log.study_time %>
-    </p>
-    <p>
+  </p>
+
+  <p>
     <%= study_log.study_date %>
-    </p>
+  </p>
+
+  <p>
+    <%= study_log.category&.name || "未設定" %>
+  </p>
 <% end %>
 
 <div>
-    <%= link_to "新規登録", new_study_log_path %>
+  <%= link_to "新規登録", new_study_log_path %>
 </div>

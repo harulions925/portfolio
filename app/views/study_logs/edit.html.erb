@@ -37,6 +37,15 @@
           <%= f.date_field :study_date %>
         </td>
       </tr>
+
+      <tr>
+        <th>
+          <%= f.label :category_id, "種類" %>
+        </th>
+        <td>
+          <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "カテゴリを選択してください" %>
+        </td>
+      </tr>
     </table>
 
     <div>

@@ -31,6 +31,12 @@
         <%= f.date_field :study_date %>
     </div>
     <div>
+      <p>
+        <%= f.label :category_id, "種類" %>
+      </p>
+        <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "選択してください" } %>
+    </div>
+    <div>
       <%= f.submit "登録完了する" %>
     </div>
 
