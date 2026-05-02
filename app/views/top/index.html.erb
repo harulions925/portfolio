@@ -1,0 +1,17 @@
+<h2>学習記録アプリ</h2>
+<h3>ログインをしていただくことで<br>
+    学習記録を投稿・編集・削除・カテゴリ検索ができます
+</h3>
+
+<% if user_signed_in? %>
+  <div>
+    <%= link_to "ログアウト",
+        destroy_user_session_path,
+        data: { turbo_method: :delete } %>
+  </div>
+<% else %>
+  <div>
+    <%= link_to "新規登録", new_user_registration_path %>
+    <%= link_to "ログイン", new_user_session_path %>
+  </div>
+<% end %>
