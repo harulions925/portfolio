@@ -7,6 +7,14 @@ class StudyLogsController < ApplicationController
     if params[:category_id].present?
         @study_logs = @study_logs.where(category_id: params[:category_id])
     end
+
+    if params[:keyword].present?
+      @study_logs = @study_logs.where(
+        "title LIKE ? OR content LIKE ?",
+        "%#{params[:keyword]}%",
+        "%#{params[:keyword]}%",
+      )
+    end
   end
 
   def new
