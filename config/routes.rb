@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     registrations: "users/registrations",
     passwords: "users/passwords"
   }
+  resources :users, only: :show
   resources :study_logs
   resources :categories
   root "top#index"
