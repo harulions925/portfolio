@@ -8,6 +8,9 @@
         </th>
         <td>
           <%= f.text_field :title %>
+          <% @study_log.errors.full_messages_for(:title).each do |message| %>
+            <p><%= message %></p>
+          <% end %>
         </td>
       </tr>
 
@@ -17,6 +20,9 @@
         </th>
         <td>
           <%= f.text_area :content %>
+          <% @study_log.errors.full_messages_for(:content).each do |message| %>
+            <p><%= message %></p>
+          <% end %>
         </td>
       </tr>
 
@@ -26,6 +32,9 @@
         </th>
         <td>
           <%= f.number_field :study_time %>
+          <% @study_log.errors.full_messages_for(:study_time).each do |message| %>
+            <p><%= message %></p>
+          <% end %>
         </td>
       </tr>
 
@@ -35,6 +44,9 @@
         </th>
         <td>
           <%= f.date_field :study_date %>
+          <% @study_log.errors.full_messages_for(:study_date).each do |message| %>
+            <p><%= message %></p>
+          <% end %>
         </td>
       </tr>
 
@@ -44,6 +56,9 @@
         </th>
         <td>
           <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "カテゴリを選択してください" %>
+          <% @study_log.errors.full_messages_for(:category_id).each do |message| %>
+            <p><%= message %></p>
+          <% end %>
         </td>
       </tr>
     </table>
