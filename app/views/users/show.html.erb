@@ -16,6 +16,13 @@
     </div>
     
     <div>
+      <p>お気に入り登録済み一覧</p>
+      <% @favorited_items.each do |study_log| %>
+        <p><%= link_to study_log.title, study_log_path(study_log) %></p>
+      <% end %>
+    </div>
+
+    <div>
       <p>自分の学習記録一覧</p>
       <% @study_logs.each do |study_log| %>
         <p>タイトル：<%= study_log.title %></p>

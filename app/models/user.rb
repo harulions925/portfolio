@@ -6,6 +6,7 @@ class User < ApplicationRecord
   
   has_many :study_logs, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorited_items, through: :favorites, source: :study_log
 
   def self.guest
     find_or_create_by!(email: "guest@example.com") do |user|
