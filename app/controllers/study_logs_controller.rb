@@ -2,11 +2,10 @@ class StudyLogsController < ApplicationController
   before_action :authenticate_user!
   def index
     @categories = Category.all
+    @study_logs = StudyLog.all
 
     if params[:category_id].present?
-        @study_logs = current_user.study_logs.where(category_id: params[:category_id])
-    else
-        @study_logs = current_user.study_logs
+        @study_logs = @study_logs.where(category_id: params[:category_id])
     end
   end
 
@@ -50,7 +49,7 @@ class StudyLogsController < ApplicationController
   end
 
   def destroy
-    @study_log = StudyLog.find(params[:id])
+    @study_log = current_user.study_logs.find(params[:id])
     @study_log.destroy
     flash[:notice] = "削除しました"
     redirect_to :study_logs
