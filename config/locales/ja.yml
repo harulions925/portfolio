@@ -1,0 +1,18 @@
+ja:
+  activerecord:
+    attributes:
+      study_log:
+        title: "タイトル"
+        content: "学習内容"
+        study_time: "学習時間"
+        study_date: "学習日"
+        category_id: "種類"
+    
+    errors:
+      models:
+        study_log:
+          attributes:
+            study_date:
+              blank: "を選択してください"
+            category_id:
+              blank: "を選択してください"
