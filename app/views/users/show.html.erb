@@ -12,7 +12,7 @@
   </div>
 
   <div>
-    <%= link_to "アカウント編集", edit_user_registration_path %>
+    <%= link_to "アカウントを編集する", edit_user_registration_path %>
   </div>
 
   <div>
@@ -36,5 +36,8 @@
       <p>学習日：<%= study_log.study_date %></p>
       <p>種類：<%= study_log.category&.name || "未設定" %></p>
     <% end %>
+  </div>
+  <div class="actions">
+    <%= link_to "投稿一覧へ戻る", study_logs_path %>
   </div>
 <% end %>

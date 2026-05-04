@@ -1,21 +1,19 @@
-<h2>学習記録アプリ</h2>
-<h3>ログインをしていただくことで<br>
-    学習記録を投稿・編集・削除・カテゴリ検索ができます
-</h3>
+<h2>StudyLog</h2>
+<h3>学習記録を投稿・管理できるアプリです</h3>
 
 <% if user_signed_in? %>
   <div>
-    <%= link_to "学習記録新規投稿ページ", new_study_log_path %>
-    <%= link_to "投稿一覧ページ", study_logs_path %>
-    <%= link_to "マイページ", user_path(current_user) %>
-    <%= link_to "ログアウト",
+    <%= link_to "学習記録を投稿する", new_study_log_path %>
+    <%= link_to "投稿一覧を見る", study_logs_path %>
+    <%= link_to "マイページを見る", user_path(current_user) %>
+    <%= link_to "ログアウトする",
         destroy_user_session_path,
         data: { turbo_method: :delete } %>
   </div>
 <% else %>
   <div>
-    <%= link_to "新規登録", new_user_registration_path %>
-    <%= link_to "ログイン", new_user_session_path %>
-    <%= link_to "ゲストログイン", users_guest_sign_in_path, data: { turbo_method: :post } %>
+    <%= link_to "新規登録する", new_user_registration_path %>
+    <%= link_to "ログインする", new_user_session_path %>
+    <%= link_to "ゲストログインする", users_guest_sign_in_path, data: { turbo_method: :post } %>
   </div>
 <% end %>

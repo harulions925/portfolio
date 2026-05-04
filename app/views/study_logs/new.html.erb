@@ -1,4 +1,4 @@
-<h2>学習記録新規登録</h2>
+<h2>新規投稿</h2>
 
 <%= form_with model: @study_log do |f| %>
     <div>
@@ -62,10 +62,10 @@
     </div>
     
     <div>
-      <%= f.submit "登録完了する" %>
+      <%= f.submit "投稿する" %>
     </div>
 
     <div>
-      <%= link_to "投稿一覧へ", study_logs_path %>
+      <%= link_to "投稿一覧へ戻る", study_logs_path %>
     </div>
 <% end %>

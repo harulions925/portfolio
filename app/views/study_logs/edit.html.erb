@@ -1,4 +1,4 @@
-<h2>編集</h2>
+<h2>投稿編集</h2>
 
 <%= form_with model: @study_log do |f| %>
     <table>
@@ -64,14 +64,14 @@
     </table>
 
     <div>
-      <ul>
         <li>
           <%= f.submit "更新する" %>
         </li>
-
         <li>
-          <%= link_to "一覧へ", study_logs_path %>
+          <%= link_to "投稿詳細へ戻る", @study_log %>
         </li>
-      </ul>
+        <li>
+          <%= link_to "投稿一覧へ戻る", study_logs_path %>
+        </li>
     </div>
 <% end %>
