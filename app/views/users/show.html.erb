@@ -23,6 +23,7 @@
     <p>お気に入り登録済み一覧</p>
     <% @favorited_items.each do |study_log| %>
       <p><%= link_to study_log.title, study_log_path(study_log) %></p>
+      <%= render "study_logs/favorite", study_log: study_log %>
     <% end %>
   </div>
 
