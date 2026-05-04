@@ -7,6 +7,13 @@ ja:
         study_time: "学習時間"
         study_date: "学習日"
         category_id: "種類"
+
+      user:
+        name: "名前"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "確認用パスワード"
+        current_password: "現在のパスワード"
     
     errors:
       models:
@@ -25,3 +32,7 @@ ja:
       not_found_in_database: "メールアドレスまたはパスワードが違います。"
       invalid: "メールアドレスまたはパスワードが違います。"
       unauthenticated: "ログインしてください。"
+
+  errors:
+    messages:
+      not_saved: "保存できませんでした。"
