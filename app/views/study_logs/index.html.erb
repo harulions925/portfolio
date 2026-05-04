@@ -13,28 +13,30 @@
 </p>
 
 <% @study_logs.each do |study_log| %>
-  <p>
-    タイトル：<%= link_to study_log.title, study_log %>
-  </p>
+  <div id="study_log_<%= study_log.id %>">
+    <p>
+      タイトル：<%= link_to study_log.title, study_log %>
+    </p>
 
-  <p>
-    学習内容：<%= study_log.content %>
-  </p>
+    <p>
+      学習内容：<%= study_log.content %>
+    </p>
 
-  <p>
-    学習時間：<%= study_log.study_time %>分
-  </p>
+    <p>
+      学習時間：<%= study_log.study_time %>分
+    </p>
 
-  <p>
-    学習日：<%= study_log.study_date %>
-  </p>
+    <p>
+      学習日：<%= study_log.study_date %>
+    </p>
 
-  <p>
-    種類：<%= study_log.category&.name || "未設定" %>
-  </p>
+    <p>
+      種類：<%= study_log.category&.name || "未設定" %>
+    </p>
 
-  <div>
-    <%= render "favorite", study_log: study_log %>
+    <div>
+      <%= render "favorite", study_log: study_log %>
+    </div>
   </div>
 <% end %>
 

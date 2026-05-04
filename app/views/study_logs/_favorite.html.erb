@@ -2,11 +2,13 @@
   <% if study_log.favorited_by?(current_user) %>
     <%= button_to "お気に入り解除",
         study_log_favorite_path(study_log),
-        method: :delete %>
+        method: :delete,
+        data: { turbo: false } %>
   <% else %>
     <%= button_to "お気に入り",
         study_log_favorite_path(study_log),
-        method: :post %>
+        method: :post,
+        data: { turbo: false } %>
   <% end %>
 
   <p>

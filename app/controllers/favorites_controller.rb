@@ -5,7 +5,7 @@ class FavoritesController < ApplicationController
     @study_log = StudyLog.find(params[:study_log_id])
     current_user.favorites.create(study_log: @study_log)
 
-    redirect_to request.referer, notice: "お気に入りに追加しました"
+    redirect_to "#{request.referer.split("#").first}#study_log_#{@study_log.id}", notice: "お気に入りに追加しました"
   end
 
   def destroy
@@ -13,6 +13,6 @@ class FavoritesController < ApplicationController
     favorite = current_user.favorites.find_by(study_log: @study_log)
     favorite.destroy if favorite
 
-    redirect_to request.referer, notice: "お気に入りを解除しました"
+    redirect_to "#{request.referer.split("#").first}#study_log_#{@study_log.id}", notice: "お気に入りを解除しました"
   end
 end
