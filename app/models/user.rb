@@ -8,7 +8,8 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorited_items, through: :favorites, source: :study_log
 
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 20 }
+  validates :profile, length: { maximum: 200 }
 
   def self.guest
     find_or_create_by!(email: "guest@example.com") do |user|

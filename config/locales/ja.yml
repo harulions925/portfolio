@@ -28,6 +28,8 @@ ja:
     sessions:
       signed_in: "ログインしました。"
       signed_out: "ログアウトしました。"
+    registrations:
+      updated: "アカウント情報を更新しました。"
     failure:
       not_found_in_database: "メールアドレスまたはパスワードが違います。"
       invalid: "メールアドレスまたはパスワードが違います。"
