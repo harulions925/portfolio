@@ -3,10 +3,17 @@
 <div class="search-form">
   <%= form_tag study_logs_path, method: :get do %>
     <%= select_tag :category_id,
-        options_from_collection_for_select(Category.all, :id, :name, params[:category_id]),
-        prompt: "カテゴリで絞る" %>
+          options_from_collection_for_select(
+            Category.all,
+            :id,
+            :name,
+            params[:category_id]
+          ),
+          prompt: "カテゴリで絞る" %>
 
-    <%= text_field_tag :keyword, params[:keyword], placeholder: "キーワードで検索" %>
+    <%= text_field_tag :keyword,
+          params[:keyword],
+          placeholder: "キーワードで検索" %>
 
     <%= submit_tag "検索", class: "search-button" %>
   <% end %>
@@ -19,7 +26,7 @@
         タイトル：<%= link_to study_log.title, study_log %>
       </p>
 
-      <p>
+      <p class="study-log-content">
         学習内容：<%= study_log.content %>
       </p>
 
@@ -42,6 +49,6 @@
   <% end %>
 </div>
 
-<div>
+<div class="actions">
   <%= link_to "新規投稿へ", new_study_log_path %>
 </div>

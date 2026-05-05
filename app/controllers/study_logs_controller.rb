@@ -1,18 +1,23 @@
 class StudyLogsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_study_log, only: [:show]
+  before_action :set_current_user_study_log, only: [:edit, :update, :destroy]
+
   def index
     @categories = Category.all
     @study_logs = StudyLog.all
 
     if params[:category_id].present?
-        @study_logs = @study_logs.where(category_id: params[:category_id])
+      @study_logs = @study_logs.where(category_id: params[:category_id])
     end
 
     if params[:keyword].present?
+      keyword = "%#{params[:keyword]}%"
+
       @study_logs = @study_logs.where(
         "title LIKE ? OR content LIKE ?",
-        "%#{params[:keyword]}%",
-        "%#{params[:keyword]}%",
+        keyword,
+        keyword
       )
     end
   end
@@ -30,23 +35,18 @@ class StudyLogsController < ApplicationController
       redirect_to study_logs_path
     else
       @categories = Category.all
-      p @study_log.errors.full_messages
-      render "new", status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
   def show
-    @study_log = StudyLog.find(params[:id])
   end
 
   def edit
-    @study_log = current_user.study_logs.find(params[:id])
     @categories = Category.all
   end
 
   def update
-    @study_log = current_user.study_logs.find(params[:id])
-
     if @study_log.update(study_log_params)
       flash[:notice] = "更新しました"
       redirect_to @study_log
@@ -57,13 +57,20 @@ class StudyLogsController < ApplicationController
   end
 
   def destroy
-    @study_log = current_user.study_logs.find(params[:id])
     @study_log.destroy
     flash[:notice] = "削除しました"
-    redirect_to :study_logs
+    redirect_to study_logs_path
   end
 
   private
+
+  def set_study_log
+    @study_log = StudyLog.find(params[:id])
+  end
+
+  def set_current_user_study_log
+    @study_log = current_user.study_logs.find(params[:id])
+  end
 
   def study_log_params
     params

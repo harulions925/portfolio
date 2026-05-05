@@ -333,6 +333,13 @@ header {
   margin: 4px 0;
 }
 
+.study-log-content {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 /* =========================
    投稿詳細
 ========================= */

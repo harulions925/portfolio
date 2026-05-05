@@ -1,10 +1,11 @@
-<h2>投稿編集</h2>
+<h2>新規投稿</h2>
 
 <div class="form-container">
   <%= form_with model: @study_log do |f| %>
     <div>
       <%= f.label :title, "タイトル" %>
       <%= f.text_field :title %>
+
       <% @study_log.errors.full_messages_for(:title).each do |message| %>
         <p><%= message %></p>
       <% end %>
@@ -13,6 +14,7 @@
     <div>
       <%= f.label :content, "学習内容" %>
       <%= f.text_area :content %>
+
       <% @study_log.errors.full_messages_for(:content).each do |message| %>
         <p><%= message %></p>
       <% end %>
@@ -21,6 +23,7 @@
     <div>
       <%= f.label :study_time, "学習時間（分）" %>
       <%= f.number_field :study_time %>
+
       <% @study_log.errors.full_messages_for(:study_time).each do |message| %>
         <p><%= message %></p>
       <% end %>
@@ -29,6 +32,7 @@
     <div>
       <%= f.label :study_date, "学習日" %>
       <%= f.date_field :study_date %>
+
       <% @study_log.errors.full_messages_for(:study_date).each do |message| %>
         <p><%= message %></p>
       <% end %>
@@ -36,7 +40,12 @@
 
     <div>
       <%= f.label :category_id, "種類" %>
-      <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "カテゴリを選択してください" %>
+      <%= f.collection_select :category_id,
+            Category.all,
+            :id,
+            :name,
+            { prompt: "選択してください" } %>
+
       <% @study_log.errors.full_messages_for(:category_id).each do |message| %>
         <p><%= message %></p>
       <% end %>
@@ -44,11 +53,7 @@
 
     <div class="form-actions">
       <div>
-        <%= f.submit "更新する" %>
-      </div>
-
-      <div>
-        <%= link_to "投稿詳細へ戻る", @study_log %>
+        <%= f.submit "投稿する" %>
       </div>
 
       <div>
