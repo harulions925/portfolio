@@ -1,77 +1,59 @@
 <h2>投稿編集</h2>
 
-<%= form_with model: @study_log do |f| %>
-    <table>
-      <tr>
-        <th>
-          <%= f.label :title, "タイトル" %>
-        </th>
-        <td>
-          <%= f.text_field :title %>
-          <% @study_log.errors.full_messages_for(:title).each do |message| %>
-            <p><%= message %></p>
-          <% end %>
-        </td>
-      </tr>
-
-      <tr>
-        <th>
-          <%= f.label :content, "学習内容" %>
-        </th>
-        <td>
-          <%= f.text_area :content %>
-          <% @study_log.errors.full_messages_for(:content).each do |message| %>
-            <p><%= message %></p>
-          <% end %>
-        </td>
-      </tr>
-
-      <tr>
-        <th>
-          <%= f.label :study_time, "学習時間（分）" %>
-        </th>
-        <td>
-          <%= f.number_field :study_time %>
-          <% @study_log.errors.full_messages_for(:study_time).each do |message| %>
-            <p><%= message %></p>
-          <% end %>
-        </td>
-      </tr>
-
-      <tr>
-        <th>
-          <%= f.label :study_date, "学習日" %>
-        </th>
-        <td>
-          <%= f.date_field :study_date %>
-          <% @study_log.errors.full_messages_for(:study_date).each do |message| %>
-            <p><%= message %></p>
-          <% end %>
-        </td>
-      </tr>
-
-      <tr>
-        <th>
-          <%= f.label :category_id, "種類" %>
-        </th>
-        <td>
-          <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "カテゴリを選択してください" %>
-          <% @study_log.errors.full_messages_for(:category_id).each do |message| %>
-            <p><%= message %></p>
-          <% end %>
-        </td>
-      </tr>
-    </table>
+<div class="form-container">
+  <%= form_with model: @study_log do |f| %>
+    <div>
+      <%= f.label :title, "タイトル" %>
+      <%= f.text_field :title %>
+      <% @study_log.errors.full_messages_for(:title).each do |message| %>
+        <p><%= message %></p>
+      <% end %>
+    </div>
 
     <div>
-        <li>
-          <%= f.submit "更新する" %>
-        </li>
-        <li>
-          <%= link_to "投稿詳細へ戻る", @study_log %>
-        </li>
-        <li>
-          <%= link_to "投稿一覧へ戻る", study_logs_path %>
-        </li>
+      <%= f.label :content, "学習内容" %>
+      <%= f.text_area :content %>
+      <% @study_log.errors.full_messages_for(:content).each do |message| %>
+        <p><%= message %></p>
+      <% end %>
     </div>
-<% end %>
+
+    <div>
+      <%= f.label :study_time, "学習時間（分）" %>
+      <%= f.number_field :study_time %>
+      <% @study_log.errors.full_messages_for(:study_time).each do |message| %>
+        <p><%= message %></p>
+      <% end %>
+    </div>
+
+    <div>
+      <%= f.label :study_date, "学習日" %>
+      <%= f.date_field :study_date %>
+      <% @study_log.errors.full_messages_for(:study_date).each do |message| %>
+        <p><%= message %></p>
+      <% end %>
+    </div>
+
+    <div>
+      <%= f.label :category_id, "種類" %>
+      <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "カテゴリを選択してください" %>
+      <% @study_log.errors.full_messages_for(:category_id).each do |message| %>
+        <p><%= message %></p>
+      <% end %>
+    </div>
+
+    <div class="form-actions">
+      <div>
+        <%= f.submit "更新する" %>
+      </div>
+
+      <div>
+        <%= link_to "投稿詳細へ戻る", @study_log %>
+      </div>
+
+      <div>
+        <%= link_to "投稿一覧へ戻る", study_logs_path %>
+      </div>
+    </div>
+  <% end %>
+</div>

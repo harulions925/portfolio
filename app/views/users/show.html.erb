@@ -1,42 +1,43 @@
-<h2>マイページ</h2>
+<h2 class="page-title">マイページ</h2>
 
 <% if user_signed_in? && @user.id == current_user.id %>
-  <div>
-    <p>ユーザー名</p>
-    <p><%= @user.name %></p>
-  </div>
+  <div class="profile-card">
+    <p>ユーザー名：<%= @user.name %></p>
 
-  <div>
-    <p>自己紹介</p>
-    <p><%= @user.profile %></p>
-  </div>
+    <p>自己紹介：<%= @user.profile %></p>
 
-  <div>
-    <%= link_to "アカウントを編集する", edit_user_registration_path %>
-  </div>
-
-  <div>
     <p>総学習時間：<%= @study_logs.sum(:study_time) %>分</p>
+
+    <div>
+      <%= link_to "アカウントを編集する", edit_user_registration_path %>
+    </div>
   </div>
-  
-  <div>
-    <p>お気に入り登録済み一覧</p>
+
+  <h3 class="mypage-section-title">お気に入り登録済み一覧</h3>
+
+  <div class="mypage-study-log-list">
     <% @favorited_items.each do |study_log| %>
-      <p><%= link_to study_log.title, study_log_path(study_log) %></p>
-      <%= render "study_logs/favorite", study_log: study_log %>
+      <div class="study-log-card">
+        <p><%= link_to study_log.title, study_log_path(study_log) %></p>
+        <%= render "study_logs/favorite", study_log: study_log %>
+      </div>
     <% end %>
   </div>
 
-  <div>
-    <p>自分の学習記録一覧</p>
+  <h3 class="mypage-section-title">自分の学習記録一覧</h3>
+
+  <div class="mypage-study-log-list">
     <% @study_logs.each do |study_log| %>
-      <p>タイトル：<%= study_log.title %></p>
-      <p>内容：<%= study_log.content %></p>
-      <p>学習時間：<%= study_log.study_time %>分</p>
-      <p>学習日：<%= study_log.study_date %></p>
-      <p>種類：<%= study_log.category&.name || "未設定" %></p>
+      <div class="study-log-card">
+        <p>タイトル：<%= study_log.title %></p>
+        <p>内容：<%= study_log.content %></p>
+        <p>学習時間：<%= study_log.study_time %>分</p>
+        <p>学習日：<%= study_log.study_date %></p>
+        <p>種類：<%= study_log.category&.name || "未設定" %></p>
+      </div>
     <% end %>
   </div>
+
   <div class="actions">
     <%= link_to "投稿一覧へ戻る", study_logs_path %>
   </div>

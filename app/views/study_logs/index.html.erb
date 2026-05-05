@@ -1,6 +1,6 @@
 <h2>投稿一覧</h2>
 
-<p>
+<div class="search-form">
   <%= form_tag study_logs_path, method: :get do %>
     <%= select_tag :category_id,
         options_from_collection_for_select(Category.all, :id, :name, params[:category_id]),
@@ -8,37 +8,39 @@
 
     <%= text_field_tag :keyword, params[:keyword], placeholder: "キーワードで検索" %>
 
-    <%= submit_tag "検索" %>
+    <%= submit_tag "検索", class: "search-button" %>
   <% end %>
-</p>
+</div>
 
-<% @study_logs.each do |study_log| %>
-  <div id="study_log_<%= study_log.id %>">
-    <p>
-      タイトル：<%= link_to study_log.title, study_log %>
-    </p>
+<div class="study-log-list">
+  <% @study_logs.each do |study_log| %>
+    <div class="study-log-card" id="study_log_<%= study_log.id %>">
+      <p>
+        タイトル：<%= link_to study_log.title, study_log %>
+      </p>
 
-    <p>
-      学習内容：<%= study_log.content %>
-    </p>
+      <p>
+        学習内容：<%= study_log.content %>
+      </p>
 
-    <p>
-      学習時間：<%= study_log.study_time %>分
-    </p>
+      <p>
+        学習時間：<%= study_log.study_time %>分
+      </p>
 
-    <p>
-      学習日：<%= study_log.study_date %>
-    </p>
+      <p>
+        学習日：<%= study_log.study_date %>
+      </p>
 
-    <p>
-      種類：<%= study_log.category&.name || "未設定" %>
-    </p>
+      <p>
+        種類：<%= study_log.category&.name || "未設定" %>
+      </p>
 
-    <div>
-      <%= render "favorite", study_log: study_log %>
+      <div>
+        <%= render "favorite", study_log: study_log %>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
 
 <div>
   <%= link_to "新規投稿へ", new_study_log_path %>

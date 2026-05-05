@@ -1,56 +1,35 @@
 <h2>投稿詳細</h2>
-  <div>
-    <p>タイトル</p>
-    <p><%= @study_log.title %></p>
-  </div>
 
-  <div>
-    <p>投稿者名</p>
-    <p><%= @study_log.user.name %></p>
-  </div>
+  <div class="detail-card">
+    <p>タイトル：<%= @study_log.title %></p>
+    <p>投稿者名：<%= @study_log.user.name %></p>
+    <p>自己紹介：<%= @study_log.user.profile %></p>
+    <p>学習内容：<%= @study_log.content %></p>
+    <p>学習時間：<%= @study_log.study_time %>分</p>
+    <p>学習日：<%= @study_log.study_date %></p>
+    <p>種類：<%= @study_log.category.name if @study_log.category.present? %></p>
 
-  <div>
-    <p>自己紹介</p>
-    <p><%= @study_log.user.profile %></p>
-  </div>
-
-  <div>
-    <p>学習内容</p>
-    <p><%= @study_log.content %></p>
-  </div>
-
-  <div>
-    <p>学習時間</p>
-    <p><%= @study_log.study_time %>分</p>
-  </div>
-
-  <div>
-    <p>学習日</p>
-    <p><%= @study_log.study_date %></p>
-  </div>
-
-  <div>
-    <p>種類
-      <%= @study_log.category.name if @study_log.category.present? %></p>
-  </div>
-
-  <div>
-    <%= render "favorite", study_log: @study_log %>
-  </div>
+    <div>
+      <%= render "favorite", study_log: @study_log %>
+    </div>
   
-  <div>
-    <%= link_to "投稿一覧へ戻る", study_logs_path %>
+    <div class="link-group">
+      <%= link_to "投稿一覧へ戻る", study_logs_path %>
+    </div>
+
+    <% if user_signed_in? && @study_log.user_id == current_user.id %>
+      <div class="link-group">
+        <%= link_to "投稿を編集する",
+              edit_study_log_path(@study_log) %>
+      </div>
+      <div class="link-group">
+        <%= link_to "投稿を削除する",
+              study_log_path(@study_log),
+              data: { 
+                turbo_method: :delete,
+                turbo_confirm: "本当にこの投稿を削除しますか?"
+              } %>
+      </div>
+    <% end %>
   </div>
-
-  <% if user_signed_in? && @study_log.user_id == current_user.id %>
-    <div>
-      <%= link_to "投稿を編集する",
-            edit_study_log_path(@study_log) %>
-    </div>
-    <div>
-      <%= link_to "投稿を削除する",
-            study_log_path(@study_log), data: { turbo_method: :delete, turbo_confirm: "本当にこの投稿を削除しますか?" } %>
-    </div>
-
-  <% end %>
   
