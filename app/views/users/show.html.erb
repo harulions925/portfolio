@@ -29,7 +29,7 @@
   <div class="mypage-study-log-list">
     <% @study_logs.each do |study_log| %>
       <div class="study-log-card">
-        <p>タイトル：<%= study_log.title %></p>
+        <p>タイトル：<%= link_to study_log.title, study_log_path(study_log) %></p>
         <p>内容：<%= study_log.content %></p>
         <p>学習時間：<%= study_log.study_time %>分</p>
         <p>学習日：<%= study_log.study_date %></p>
