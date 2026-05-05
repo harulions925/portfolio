@@ -32,7 +32,9 @@
         <p>
           タイトル：<%= link_to study_log.title, study_log_path(study_log) %>
         </p>
-        <p>内容：<%= study_log.content %></p>
+        <p class="study-log-content">
+          内容：<%= study_log.content %>
+        </p>
         <p>学習時間：<%= study_log.study_time %>分</p>
         <p>学習日：<%= study_log.study_date %></p>
         <p>種類：<%= study_log.category&.name || "未設定" %></p>
