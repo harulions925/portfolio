@@ -19,7 +19,7 @@ main {
   max-width: 960px;
   width: 100%;
   margin: 0 auto;
-  padding: 24px 16px;
+  padding: 8px 16px;
   flex: 1;
 }
 
@@ -50,7 +50,7 @@ select {
 }
 
 textarea {
-  min-height: 120px;
+  min-height: 90px;
 }
 
 input[type="submit"],
@@ -291,7 +291,7 @@ header {
 ========================= */
 .search-form {
   max-width: 480px;
-  margin: 0 auto 12px;
+  margin: 0 auto 10px;
 }
 
 .search-button,
@@ -304,7 +304,7 @@ header {
 .study-log-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  gap: 14px;
   max-height: 473px;
   overflow-y: auto;
   padding-right: 8px;
@@ -368,14 +368,14 @@ header {
    マイページ
 ========================= */
 .page-title {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .profile-card {
   width: 100%;
   max-width: 900px;
-  margin: 16px auto;
-  padding: 12px 24px;
+  margin: 8px auto 10px;
+  padding: 10px 24px;
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -383,18 +383,18 @@ header {
 }
 
 .profile-card p {
-  margin: 6px 0;
+  margin: 4px 0;
 }
 
 .mypage-section-title {
-  margin: 16px 0 8px;
+  margin: 10px 0 6px;
 }
 
 .mypage-study-log-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  max-height: 200px;
+  gap: 10px;
+  max-height: 205px;
   overflow-y: auto;
 }
 
